@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>404 - Gecko Not Found</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    /* Base styles */
+    body {
+      font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      background: #f9fafc;
+      color: #333;
+      transition: background 0.5s ease, color 0.5s ease;
+    }
+
+    /* Dark mode option */
+    body.dark {
+      background: #1e1e2f;
+      color: #f0f0f0;
+    }
+
+    /* Gecko emoji */
+    #gecko {
+      font-size: 100px;
+      margin: 20px;
+      transition: transform 0.3s ease;
+    }
+    #gecko:hover {
+      transform: scale(1.1);
+    }
+
+    /* Title */
+    h1 {
+      font-size: 48px;
+      margin: 20px 0 10px;
+    }
+
+    /* Subtitle */
+    p {
+      font-size: 18px;
+      margin: 10px 0;
+    }
+
+    /* Button */
+    a.button {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 12px 24px;
+      font-size: 16px;
+      border-radius: 10px;
+      background: #4cafef;
+      color: white;
+      text-decoration: none;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+    a.button:hover {
+      background: #3a9bdc;
+      transform: translateY(-2px);
+    }
+
+    /* Hint box */
+    #hint-box {
+      font-style: italic;
+      margin-top: 20px;
+      font-size: 14px;
+      color: #666;
+    }
+    body.dark #hint-box {
+      color: #aaa;
+    }
+
+    /* Mobile responsiveness */
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 32px;
+      }
+      #gecko {
+        font-size: 70px;
+      }
+      p {
+        font-size: 16px;
+      }
+      a.button {
+        width: 80%;
+        max-width: 300px;
+        font-size: 15px;
+        padding: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="gecko">🦎</div>
+  <h1>404</h1>
+  <p>Oops! Your gecko wandered off...</p>
+  <a href="index.html" class="button">Return Home</a>
+  <p id="hint-box">💡 Even geckos sometimes hide — check under the rocks!</p>
+</body>
+</html>
