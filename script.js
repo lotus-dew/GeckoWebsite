@@ -10,7 +10,7 @@ let lastAction = null;
 let consecutiveCount = 0;
 
 // Theme preference
-let theme = localStorage.getItem("theme") || "light";
+let theme = localStorage.getItem("theme") || "dark";
 document.body.classList.add(theme);
 document.getElementById("theme-icon").innerText = theme === "dark" ? "dark_mode" : "light_mode";
 

@@ -42,7 +42,6 @@ button {
     transition: background 0.3s ease, transform 0.2s ease;
 }
 button:hover:not(:disabled) {
-    background: #3a9bdc;
     transform: translateY(-2px);
 }
 button:disabled {
@@ -65,6 +64,9 @@ button:disabled {
 .icon-btn:hover {
     transform: rotate(20deg);
 }
+
+
+
 
 /* Trust bar */
 #trust-bar {
@@ -146,6 +148,41 @@ body.dark .modal-content {
     to {transform: translateY(0); opacity: 1;}
 }
 
+/* Name input field */
+#gecko-name-input {
+    width: 90%;
+    max-width: 280px;
+    padding: 12px 14px;
+    margin: 12px 0;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    background: #fdfdfd;
+    color: #333;
+}
+
+/* Focus state */
+#gecko-name-input:focus {
+    border-color: #4cafef;
+    box-shadow: 0 0 8px rgba(76, 175, 239, 0.4);
+    background: #fff;
+}
+
+/* Dark mode adjustments */
+body.dark #gecko-name-input {
+    background: #2a2a3d;
+    color: #f0f0f0;
+    border: 2px solid #555;
+}
+body.dark #gecko-name-input:focus {
+    border-color: #76d176;
+    box-shadow: 0 0 8px rgba(118, 209, 118, 0.4);
+}
+
+
+
 /* 📱 Mobile responsiveness */
 @media (max-width: 600px) {
     #gecko {
@@ -180,5 +217,21 @@ body.dark .modal-content {
     .modal-content {
         margin: 30% auto;
         padding: 16px;
+    }
+    /* Relocate theme toggle button */
+    .icon-btn {
+        pointer-events: none;   /* disables clicks */
+        opacity: 0.0;           /* faded look */
+        cursor: not-allowed;    /* shows disabled cursor */
+
+    }
+    .icon-btn:hover {
+        transform: translateX(50%) scale(1.1);
+    }
+
+    #gecko-name-input {
+        width: 95%;
+        font-size: 15px;
+        padding: 10px 12px;
     }
 }
