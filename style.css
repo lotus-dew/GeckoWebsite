@@ -69,6 +69,7 @@ button:disabled {
 /* Trust bar */
 #trust-bar {
     width: 320px;
+    max-width: 90%;
     height: 30px;
     border-radius: 15px;
     overflow: hidden;
@@ -122,9 +123,10 @@ body.dark #hint-box {
 
 .modal-content {
     background: #fff;
-    margin: 15% auto;
+    margin: 20% auto;
     padding: 20px;
-    width: 320px;
+    width: 90%;
+    max-width: 320px;
     border-radius: 12px;
     box-shadow: 0 6px 20px rgba(0,0,0,0.2);
     animation: slideUp 0.5s ease;
@@ -142,4 +144,36 @@ body.dark .modal-content {
 @keyframes slideUp {
     from {transform: translateY(40px); opacity: 0;}
     to {transform: translateY(0); opacity: 1;}
+}
+
+/* 📱 Mobile responsiveness */
+@media (max-width: 600px) {
+    #gecko {
+        font-size: 70px;
+        margin: 15px;
+    }
+
+    button {
+        width: 80%;
+        max-width: 300px;
+        font-size: 14px;
+        padding: 10px 18px;
+    }
+
+    #trust-bar {
+        height: 24px;
+    }
+
+    #status {
+        font-size: 16px;
+    }
+
+    #hint-box {
+        font-size: 13px;
+    }
+
+    .modal-content {
+        margin: 30% auto;
+        padding: 16px;
+    }
 }

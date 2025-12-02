@@ -39,7 +39,7 @@ window.onload = function() {
     } else {
         updateTrustBar();
         document.getElementById("status").innerText = `${geckoName} is waiting...`;
-        showHintOrFact();
+        showHintOrFact(); // <-- show a hint/fact immediately on load
     }
 };
 
@@ -52,7 +52,20 @@ document.getElementById("save-name-btn").addEventListener("click", () => {
         document.getElementById("name-modal").style.display = "none";
         document.getElementById("status").innerText = `${geckoName} is waiting...`;
         updateTrustBar();
-        showHintOrFact();
+        showHintOrFact(); // <-- also show one right after naming
+    }
+});
+
+
+// Save name
+document.getElementById("save-name-btn").addEventListener("click", () => {
+    const input = document.getElementById("gecko-name-input").value.trim();
+    if (input) {
+        geckoName = input;
+        localStorage.setItem("geckoName", geckoName);
+        document.getElementById("name-modal").style.display = "none";
+        document.getElementById("status").innerText = `${geckoName} is waiting...`;
+        updateTrustBar();
     }
 });
 
@@ -63,10 +76,9 @@ function updateTrustBar() {
     } else if (trust <= 0) {
         document.getElementById("status").innerText = `${geckoName} feels neglected...`;
     }
-    showHintOrFact();
 }
 
-// Display a random hint or fun fact under the status
+// Display a random hint or fun fact
 function showHintOrFact() {
     const combined = [...funFacts, ...hints];
     const randomText = combined[Math.floor(Math.random() * combined.length)];
@@ -139,11 +151,12 @@ function interactGecko() {
     trackAction("interact");
 }
 
-// Trust decay
+// 🕒 Trust decay
 function decayTrust() {
     trust = Math.max(trust - 1, 0);
     localStorage.setItem("geckoTrust", trust);
     updateTrustBar();
+    showHintOrFact(); // <-- only update hints/facts here
 }
 setInterval(decayTrust, 10000);
 
