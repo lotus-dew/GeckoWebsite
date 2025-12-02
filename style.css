@@ -1,0 +1,145 @@
+/* Base styles */
+body {
+    font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    transition: background 0.5s ease, color 0.5s ease;
+}
+
+/* Light Mode */
+body.light {
+    background: #f9fafc;
+    color: #333;
+}
+
+/* Dark Mode */
+body.dark {
+    background: #1e1e2f;
+    color: #f0f0f0;
+}
+
+/* Gecko emoji */
+#gecko {
+    font-size: 100px;
+    margin: 20px;
+    transition: transform 0.3s ease;
+}
+#gecko:hover {
+    transform: scale(1.1);
+}
+
+/* Buttons */
+button {
+    margin: 10px;
+    padding: 12px 24px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 8px;
+    background: #4cafef;
+    color: white;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+button:hover:not(:disabled) {
+    background: #3a9bdc;
+    transform: translateY(-2px);
+}
+button:disabled {
+    background: #aaa;
+    cursor: not-allowed;
+}
+
+/* Theme toggle icon */
+.icon-btn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 28px;
+    color: inherit;
+    transition: transform 0.3s ease;
+}
+.icon-btn:hover {
+    transform: rotate(20deg);
+}
+
+/* Trust bar */
+#trust-bar {
+    width: 320px;
+    height: 30px;
+    border-radius: 15px;
+    overflow: hidden;
+    margin: 20px auto;
+    background: #e0e0e0;
+    border: 2px solid #ccc;
+    transition: background 0.5s ease, border 0.5s ease;
+}
+body.dark #trust-bar {
+    background: #333;
+    border: 2px solid #555;
+}
+
+#trust-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #76d176, #4cafef);
+    transition: width 0.5s ease;
+}
+
+/* Status text */
+#status {
+    font-size: 18px;
+    margin-top: 10px;
+    font-weight: 500;
+    transition: color 0.5s ease;
+}
+
+/* Hint box */
+#hint-box {
+    font-style: italic;
+    margin-top: 8px;
+    font-size: 14px;
+    color: #666;
+    transition: color 0.5s ease;
+}
+body.dark #hint-box {
+    color: #aaa;
+}
+
+/* Modal styling */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 10;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    animation: fadeIn 0.5s ease;
+}
+
+.modal-content {
+    background: #fff;
+    margin: 15% auto;
+    padding: 20px;
+    width: 320px;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+    animation: slideUp 0.5s ease;
+}
+body.dark .modal-content {
+    background: #2a2a3d;
+    color: #f0f0f0;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+@keyframes slideUp {
+    from {transform: translateY(40px); opacity: 0;}
+    to {transform: translateY(0); opacity: 1;}
+}

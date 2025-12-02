@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Gecko Tamagotchi</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+<h1>Raise Your Gecko's Trust 🦎</h1>
+<div id="gecko">🦎</div>
+
+<button id="feed-btn">Feed</button>
+<button id="interact-btn">Interact</button>
+
+<!-- Theme toggle icon -->
+<button id="theme-toggle" class="icon-btn">
+    <span class="material-icons" id="theme-icon">light_mode</span>
+</button>
+
+<div id="trust-bar">
+    <div id="trust-fill"></div>
+</div>
+<p id="status">Your gecko is waiting...</p>
+
+<!-- Name prompt modal -->
+<div id="name-modal" class="modal">
+    <div class="modal-content">
+        <h2>Name Your Gecko</h2>
+        <input type="text" id="gecko-name-input" placeholder="Enter a name">
+        <button id="save-name-btn">Save Name</button>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
