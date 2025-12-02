@@ -39,22 +39,47 @@ body.dark {
 }
 
 #image-credit a {
-    color: #4cafef;
-    text-decoration: none;
+    color: #4cafef;          /* default link color */
+    text-decoration: none;   /* removes underline */
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;                /* space between icon and text */
     transition: color 0.3s ease, opacity 0.3s ease;
 }
 
-#image-credit a:hover {
-    color: #3a9bdc;
+#image-credit a:hover,
+#image-credit a:focus {
+    color: #3a9bdc;          /* hover/focus color */
     opacity: 1;
 }
 
+#image-credit a:active {
+    color: #2a7bb5;          /* active click color */
+}
+
+.credit-icon {
+    width: 14px;
+    height: 14px;
+    opacity: 0.9;
+    transition: opacity 0.3s ease;
+}
+
+#image-credit a:hover .credit-icon {
+    opacity: 1;              /* brighten icon on hover */
+}
+
+/* Dark mode adjustments */
 body.dark #image-credit a {
     color: #76d176;
 }
-body.dark #image-credit a:hover {
+body.dark #image-credit a:hover,
+body.dark #image-credit a:focus {
     color: #58b158;
 }
+body.dark #image-credit a:active {
+    color: #3f8f3f;
+}
+
 #gecko:hover {
     transform: scale(1.1);
 }
