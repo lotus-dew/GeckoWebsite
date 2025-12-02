@@ -32,6 +32,17 @@ const hints = [
     "If you do one action too many times, your gecko may not like it!"
 ];
 
+// Mood images (placeholder paths)
+const moodImages = {
+    superBad: "images/superbad.png",
+    bad: "images/bad.png",
+    neutral: "images/neutral.png",
+    good: "images/good.png",
+    superGood: "images/supergood.png",
+    sick: "images/sick.png",
+    stressed: "images/stressed.png"
+};
+
 // Show name modal if no name yet
 window.onload = function() {
     if (!geckoName) {
@@ -76,7 +87,36 @@ function updateTrustBar() {
     } else if (trust <= 0) {
         document.getElementById("status").innerText = `${geckoName} feels neglected...`;
     }
+    updateGeckoMood();
 }
+
+function updateGeckoMood() {
+    const geckoElement = document.getElementById("gecko");
+
+    // Illness states override affection
+    if (lastAction === "feed" && consecutiveCount >= 3) {
+        geckoElement.innerHTML = `<img src="${moodImages.sick}" alt="Sick Gecko" style="width:100px;">`;
+        return;
+    }
+    if (lastAction === "interact" && consecutiveCount >= 3) {
+        geckoElement.innerHTML = `<img src="${moodImages.stressed}" alt="Stressed Gecko" style="width:100px;">`;
+        return;
+    }
+
+    // Affection-based moods
+    if (trust <= 20) {
+        geckoElement.innerHTML = `<img src="${moodImages.superBad}" alt="Super Bad Gecko" style="width:100px;">`;
+    } else if (trust <= 40) {
+        geckoElement.innerHTML = `<img src="${moodImages.bad}" alt="Bad Gecko" style="width:100px;">`;
+    } else if (trust <= 60) {
+        geckoElement.innerHTML = `<img src="${moodImages.neutral}" alt="Neutral Gecko" style="width:100px;">`;
+    } else if (trust <= 80) {
+        geckoElement.innerHTML = `<img src="${moodImages.good}" alt="Good Gecko" style="width:100px;">`;
+    } else {
+        geckoElement.innerHTML = `<img src="${moodImages.superGood}" alt="Super Good Gecko" style="width:100px;">`;
+    }
+}
+
 
 // Display a random hint or fun fact
 function showHintOrFact() {
