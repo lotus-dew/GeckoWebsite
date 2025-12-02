@@ -25,6 +25,36 @@ body.dark {
     margin: 20px;
     transition: transform 0.3s ease;
 }
+#gecko-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#image-credit {
+    font-size: 14px;
+    margin-top: 6px;
+    font-style: italic;
+    opacity: 0.85;
+}
+
+#image-credit a {
+    color: #4cafef;
+    text-decoration: none;
+    transition: color 0.3s ease, opacity 0.3s ease;
+}
+
+#image-credit a:hover {
+    color: #3a9bdc;
+    opacity: 1;
+}
+
+body.dark #image-credit a {
+    color: #76d176;
+}
+body.dark #image-credit a:hover {
+    color: #58b158;
+}
 #gecko:hover {
     transform: scale(1.1);
 }
