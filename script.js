@@ -165,7 +165,7 @@ function trackAction(actionType) {
         trust = Math.max(trust - 5, 0);
         updateTrustBar();
     } else if (actionType === "interact" && consecutiveCount >= 3) {
-        document.getElementById("status").innerText = `${geckoName} feels stressed from too much play!`;
+        document.getElementById("status").innerText = `${geckoName} feels stressed from too many cuddles!`;
         trust = Math.max(trust - 5, 0);
         updateTrustBar();
     }
@@ -185,7 +185,7 @@ function interactGecko() {
     if (interactCooldown) return;
     trust = Math.min(trust + 5, 100);
     localStorage.setItem("geckoTrust", trust);
-    document.getElementById("status").innerText = `You played with ${geckoName}. ${geckoName} trusts you more!`;
+    document.getElementById("status").innerText = `You cuddled with ${geckoName}. ${geckoName} trusts you more!`;
     updateTrustBar();
     startInteractCooldown();
     trackAction("interact");
