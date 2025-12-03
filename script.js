@@ -11,7 +11,7 @@ let consecutiveCount = 0;
 let theme = localStorage.getItem("theme") || "dark";
 document.body.classList.add(theme);
 document.getElementById("theme-icon").innerText = theme === "dark" ? "dark_mode" : "light_mode";
-document.getElementById("theme-toggle").setAttribute("aria-pressed", theme = "dark");
+document.getElementById("theme-toggle").setAttribute("aria-pressed", theme === "dark");
 
 // Mood images
 const moodImages = {
@@ -46,6 +46,7 @@ const hints = [
 
 
 window.onload = function() {
+    console.log("geckoName:", geckoName);
     if (!geckoName) {
         document.getElementById("name-modal").style.display = "block";
     } else {
@@ -96,34 +97,34 @@ function updateTrustBar() {
 
 // Unified mood + status
 function updateGeckoMood() {
-    if (!geckoName) geckoName = "Your gecko";
+    const nameToShow = geckoName || "Your gecko";
 
     if (lastAction === "feed" && consecutiveCount >= 3) {
         setGeckoImage(moodImages.sick, "Sick Gecko");
-        document.getElementById("status").innerText = `${geckoName} feels sick from overeating!`;
+        document.getElementById("status").innerText = `${nameToShow} feels sick from overeating!`;
         return;
     }
     if (lastAction === "interact" && consecutiveCount >= 3) {
         setGeckoImage(moodImages.stressed, "Stressed Gecko");
-        document.getElementById("status").innerText = `${geckoName} feels stressed from too many cuddles!`;
+        document.getElementById("status").innerText = `${nameToShow} feels stressed from too many cuddles!`;
         return;
     }
 
     if (trust <= 20) {
         setGeckoImage(moodImages.superBad, "Super Bad Gecko");
-        document.getElementById("status").innerText = `${geckoName} looks very unhappy...`;
+        document.getElementById("status").innerText = `${nameToShow} looks very unhappy...`;
     } else if (trust <= 40) {
         setGeckoImage(moodImages.bad, "Bad Gecko");
-        document.getElementById("status").innerText = `${geckoName} seems upset.`;
+        document.getElementById("status").innerText = `${nameToShow} seems upset.`;
     } else if (trust <= 60) {
         setGeckoImage(moodImages.neutral, "Neutral Gecko");
-        document.getElementById("status").innerText = `${geckoName} is calm and neutral.`;
+        document.getElementById("status").innerText = `${nameToShow} is calm and neutral.`;
     } else if (trust <= 80) {
         setGeckoImage(moodImages.good, "Good Gecko");
-        document.getElementById("status").innerText = `${geckoName} looks happy!`;
+        document.getElementById("status").innerText = `${nameToShow} looks happy!`;
     } else {
         setGeckoImage(moodImages.superGood, "Super Good Gecko");
-        document.getElementById("status").innerText = `${geckoName} is thrilled and trusts you deeply!`;
+        document.getElementById("status").innerText = `${nameToShow} is thrilled and trusts you deeply!`;
     }
 }
 
@@ -217,7 +218,7 @@ document.getElementById("theme-toggle").addEventListener("click", () => {
     localStorage.setItem("theme", theme);
     document.getElementById("theme-icon").innerText =
         theme === "dark" ? "dark_mode" : "light_mode";
-    document.getElementById("theme-toggle").setAttribute("aria-pressed", theme = "dark");
+    document.getElementById("theme-toggle").setAttribute("aria-pressed", theme === "dark");
 });
 
 // Attach event listeners
