@@ -1,4 +1,4 @@
-/* Base styles */
+
 body {
     font-family: 'Segoe UI', Roboto, Arial, sans-serif;
     text-align: center;
@@ -7,29 +7,51 @@ body {
     transition: background 0.5s ease, color 0.5s ease;
 }
 
-/* Light Mode */
+
 body.light {
-    background: #f9fafc;
-    color: #333;
+    background: #fffaee;
+    color: #221d1b;
 }
 
-/* Dark Mode */
 body.dark {
-    background: #1e1e2f;
-    color: #f0f0f0;
+    background: #221d1b;
+    color: #fffaee;
 }
 
-/* Gecko emoji */
-#gecko {
-    font-size: 100px;
-    margin: 20px;
-    transition: transform 0.3s ease;
-}
 #gecko-container {
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
 }
+
+#gecko img {
+    width: 180px;
+    transition: transform 0.3s ease;
+}
+#gecko img:hover {
+    transform: scale(1.1);
+}
+
+.top-hat {
+    position: absolute;
+    width: 60px;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-8px); }
+    75% { transform: translateX(8px); }
+}
+.gecko-bounce img { animation: bounce 0.6s ease; }
+.gecko-shake img { animation: shake 0.6s ease; }
 
 #image-credit {
     font-size: 14px;
@@ -37,54 +59,26 @@ body.dark {
     font-style: italic;
     opacity: 0.85;
 }
-
 #image-credit a {
-    color: #4cafef;          /* default link color */
-    text-decoration: none;   /* removes underline */
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;                /* space between icon and text */
+    color: #6c4f3d;
+    text-decoration: none;
     transition: color 0.3s ease, opacity 0.3s ease;
 }
-
 #image-credit a:hover,
 #image-credit a:focus {
-    color: #3a9bdc;          /* hover/focus color */
+    color: #8b6b52;
     opacity: 1;
 }
-
 #image-credit a:active {
-    color: #2a7bb5;          /* active click color */
+    color: #a57c5a;
 }
-
-.credit-icon {
-    width: 14px;
-    height: 14px;
-    opacity: 0.9;
-    transition: opacity 0.3s ease;
-}
-
-#image-credit a:hover .credit-icon {
-    opacity: 1;              /* brighten icon on hover */
-}
-
-/* Dark mode adjustments */
 body.dark #image-credit a {
-    color: #76d176;
+    color: #c2a57c;
 }
-body.dark #image-credit a:hover,
-body.dark #image-credit a:focus {
-    color: #58b158;
-}
-body.dark #image-credit a:active {
-    color: #3f8f3f;
+body.dark #image-credit a:hover {
+    color: #e0cba3;
 }
 
-#gecko:hover {
-    transform: scale(1.1);
-}
-
-/* Buttons */
 button {
     margin: 10px;
     padding: 12px 24px;
@@ -92,7 +86,7 @@ button {
     cursor: pointer;
     border: none;
     border-radius: 10px;
-    background: #4cafef;
+    background: #8b6b52;
     color: white;
     transition: background 0.3s ease, transform 0.2s ease;
 }
@@ -104,7 +98,6 @@ button:disabled {
     cursor: not-allowed;
 }
 
-/* Theme toggle icon */
 .icon-btn {
     position: absolute;
     top: 12px;
@@ -121,9 +114,6 @@ button:disabled {
 }
 
 
-
-
-/* Trust bar */
 #trust-bar {
     width: 320px;
     max-width: 90%;
@@ -131,23 +121,33 @@ button:disabled {
     border-radius: 15px;
     overflow: hidden;
     margin: 20px auto;
-    background: #e0e0e0;
-    border: 2px solid #ccc;
+    background: #e8dccc;
+    border: 2px solid #cbbba0;
     transition: background 0.5s ease, border 0.5s ease;
 }
 body.dark #trust-bar {
-    background: #333;
-    border: 2px solid #555;
+    background: #3a3a3a;
+    border: 2px solid #666;
 }
-
 #trust-fill {
     height: 100%;
     width: 0%;
-    background: linear-gradient(90deg, #76d176, #4cafef);
     transition: width 0.5s ease;
 }
+#trust-fill.low {
+    background: linear-gradient(90deg, #4a2c1f, #a9745a);
+}
 
-/* Status text */
+#trust-fill.medium {
+    background: linear-gradient(90deg, #c2a97a, #fff2d6);
+}
+
+#trust-fill.high {
+    background: linear-gradient(90deg, #225324, #679e67);
+}
+
+
+
 #status {
     font-size: 18px;
     margin-top: 10px;
@@ -155,7 +155,7 @@ body.dark #trust-bar {
     transition: color 0.5s ease;
 }
 
-/* Hint box */
+
 #hint-box {
     font-style: italic;
     margin-top: 8px;
@@ -167,7 +167,7 @@ body.dark #hint-box {
     color: #aaa;
 }
 
-/* Modal styling */
+
 .modal {
     display: none;
     position: fixed;
@@ -177,7 +177,6 @@ body.dark #hint-box {
     background-color: rgba(0,0,0,0.5);
     animation: fadeIn 0.5s ease;
 }
-
 .modal-content {
     background: #fff;
     margin: 20% auto;
@@ -187,13 +186,31 @@ body.dark #hint-box {
     border-radius: 12px;
     box-shadow: 0 6px 20px rgba(0,0,0,0.2);
     animation: slideUp 0.5s ease;
+    position: relative;
 }
 body.dark .modal-content {
-    background: #2a2a3d;
-    color: #f0f0f0;
+    background: #3a3a3a;
+    color: #f0eae2;
 }
 
-/* Animations */
+
+.modal-close {
+    position: absolute;
+    top: 8px;
+    right: 12px;
+    font-size: 20px;
+    cursor: pointer;
+    color: inherit;
+    background: none;
+    border: none;
+}
+.modal-close:hover {
+    color: #4cafef;
+}
+body.dark .modal-close:hover {
+    color: #76d176;
+}
+
 @keyframes fadeIn {
     from {opacity: 0;}
     to {opacity: 1;}
@@ -203,49 +220,59 @@ body.dark .modal-content {
     to {transform: translateY(0); opacity: 1;}
 }
 
-/* Name input field */
+
 #gecko-name-input {
     width: 90%;
     max-width: 280px;
     padding: 12px 14px;
     margin: 12px 0;
     font-size: 16px;
-    border: 2px solid #ccc;
+    border: 2px solid #cbbba0;
     border-radius: 10px;
     outline: none;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
-    background: #fdfdfd;
-    color: #333;
+    background: #fffaee;
+    color: #221d1b;
 }
-
-/* Focus state */
 #gecko-name-input:focus {
-    border-color: #4cafef;
-    box-shadow: 0 0 8px rgba(76, 175, 239, 0.4);
-    background: #fff;
+    border-color: #8b6b52;
+    box-shadow: 0 0 8px rgba(139, 107, 82, 0.4);
 }
-
-/* Dark mode adjustments */
 body.dark #gecko-name-input {
-    background: #2a2a3d;
-    color: #f0f0f0;
-    border: 2px solid #555;
+    background: #221d1b;
+    color: #fffaee;
+    border: 2px solid #816FFF;
 }
 body.dark #gecko-name-input:focus {
-    border-color: #76d176;
-    box-shadow: 0 0 8px rgba(118, 209, 118, 0.4);
+    border-color: #679e67;
+    box-shadow: 0 0 8px #225324;
+}
+#gecko-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
 }
 
+#gecko-btn:focus {
+    outline: none;
+}
+
+#gecko img {
+    width: 180px;
+    transition: transform 0.3s ease;
+}
+
+#gecko-btn:hover img {
+    transform: scale(1.1);
+}
 
 
 /* 📱 Mobile responsiveness */
 @media (max-width: 600px) {
-    #gecko {
-        font-size: 70px;
-        margin: 15px;
+    #gecko img {
+        width: 140px;
     }
-
-    /* Stack buttons vertically */
     #feed-btn, #interact-btn {
         display: block;
         width: 85%;
@@ -253,40 +280,38 @@ body.dark #gecko-name-input:focus {
         margin: 10px auto;
         font-size: 15px;
         padding: 12px;
+        box-shadow: 0 3px 6px rgba(0,0,0,0.2);
     }
-
+    button:active {
+        transform: scale(0.97);
+    }
     #trust-bar {
         height: 24px;
     }
-
     #status {
         font-size: 16px;
         margin: 12px;
     }
-
     #hint-box {
         font-size: 13px;
         margin: 8px 12px;
     }
-
     .modal-content {
         margin: 30% auto;
         padding: 16px;
     }
-    /* Relocate theme toggle button */
-    .icon-btn {
-        pointer-events: none;   /* disables clicks */
-        opacity: 0.0;           /* faded look */
-        cursor: not-allowed;    /* shows disabled cursor */
-
-    }
-    .icon-btn:hover {
-        transform: translateX(50%) scale(1.1);
-    }
-
     #gecko-name-input {
         width: 95%;
         font-size: 15px;
         padding: 10px 12px;
     }
+
+    .icon-btn {
+        display: none;
+    }
+
+    .icon-btn:hover {
+        transform: scale(1.1);
+    }
+
 }

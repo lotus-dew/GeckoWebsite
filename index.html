@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gecko Game</title>
     <link rel="stylesheet" href="style.css">
     <!-- Google Material Icons -->
@@ -11,7 +11,9 @@
 <body>
 <h1>Raise Your Gecko!</h1>
 <div id="gecko-container">
-    <div id="gecko"></div>
+    <button id="gecko-btn">
+        <div id="gecko"></div>
+    </button>
     <p id="image-credit">
         Art by
         <a href="https://www.tumblr.com/starshapedmilo?source=share" target="_blank" rel="noopener noreferrer">
@@ -23,8 +25,8 @@
 <button id="feed-btn">Feed</button>
 <button id="interact-btn">Cuddle</button>
 
-<!-- Theme toggle icon -->
-<button id="theme-toggle" class="icon-btn">
+
+<button id="theme-toggle" class="icon-btn" aria-pressed="false">
     <span class="material-icons" id="theme-icon">light_mode</span>
 </button>
 
@@ -33,12 +35,13 @@
 </div>
 <p id="status">Your gecko is waiting...</p>
 
-<!-- Name prompt modal -->
+
 <div id="name-modal" class="modal">
     <div class="modal-content">
         <h2>Name Your Gecko</h2>
         <input type="text" id="gecko-name-input" placeholder="Enter a name">
         <button id="save-name-btn">Save Name</button>
+        <button id="close-modal-btn" class="modal-close">&times;</button>
     </div>
 </div>
 
