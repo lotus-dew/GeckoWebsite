@@ -1,5 +1,5 @@
 let trust = parseInt(localStorage.getItem("geckoTrust")) || 0;
-let geckoName = localStorage.getItem("geckoName") || null;
+let geckoName = localStorage.getItem("geckoName");
 
 let feedCooldown = false;
 let interactCooldown = false;
@@ -44,32 +44,31 @@ const hints = [
     "Try petting your gecko! You may be in for a fun surprise!"
 ];
 
-// Show name modal if no name yet
+
 window.onload = function() {
     if (!geckoName) {
         document.getElementById("name-modal").style.display = "block";
     } else {
         updateTrustBar();
+        document.getElementById("status").innerText = `${geckoName} is waiting...`;
         showHintOrFact();
     }
 };
 
-// Save name
+
 document.getElementById("save-name-btn").addEventListener("click", () => {
     const input = document.getElementById("gecko-name-input").value.trim();
     if (input) {
         geckoName = input;
         localStorage.setItem("geckoName", geckoName);
         document.getElementById("name-modal").style.display = "none";
+        document.getElementById("status").innerText = `${geckoName} is waiting...`;
         updateTrustBar();
         showHintOrFact();
     }
 });
 
-// Close modal
-document.getElementById("close-modal-btn").addEventListener("click", () => {
-    document.getElementById("name-modal").style.display = "none";
-});
+
 
 // Helper: set gecko image
 function setGeckoImage(imagePath, altText) {
